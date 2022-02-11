@@ -1,0 +1,27 @@
+name: "test Actions"
+
+on:
+  workflow_dispatch:
+    inputs:
+      grid-args:
+        required: true
+        default: --config config.yml --instance_type t2.medium
+        description: test actions
+
+jobs:
+  gridai-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: gridai-actions/gridai-login@v0
+        with:
+          gridai-username: ${{ secrets.GRIDAI_USERNAME }} 
+          gridai-key: ${{ secrets.GRIDAI_KEY }}
+              
+      - id: gridai-obj-status
+        run: |
+          # failed can flipped to running.  check 3 times for flip flop.
+          pwd
+          ls -al
+          grid run ${{github.event.inputs.grid-args}} hello.py
+        shell: bash
