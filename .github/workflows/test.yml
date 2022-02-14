@@ -28,7 +28,7 @@ jobs:
           # failed can flipped to running.  check 3 times for flip flop.
           pwd
           ls -al
-          grid run ${{github.event.inputs.grid-args}} hello.py
+          grid run ${{github.event.inputs.grid-args}} run.py
           export run_name=${{ inputs.run_name }}
           echo "run_name=${run_name}" >> $GITHUB_ENV
         shell: bash
