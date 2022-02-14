@@ -11,11 +11,7 @@ on:
         required: true
         default: --config config.yml --instance_type t2.medium
         description: test actions
-        # make sure name is not longer than this
-        run_name:
-        required: false
-        default: "c$(date '+%y%m%d-%H%M%S')"
-        type: string
+        
 
 jobs:
   gridai-actions:
