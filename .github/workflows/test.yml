@@ -23,5 +23,5 @@ jobs:
           # failed can flipped to running.  check 3 times for flip flop.
           pwd
           ls -al
-          grid run ${{github.event.inputs.grid-args}} hello.py
+          grid run ${{github.event.inputs.grid-args}} run.py
         shell: bash
