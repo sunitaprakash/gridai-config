@@ -3,6 +3,10 @@ name: "test Actions"
 on:
   workflow_dispatch:
     inputs:
+      run_name:
+        required: true
+        default: c$(date '+%y%m%d-%H%M%S')
+        description: Grid.ai Run name`
       grid-args:
         required: true
         default: --config config.yml --instance_type t2.medium
@@ -24,4 +28,6 @@ jobs:
           pwd
           ls -al
           grid run ${{github.event.inputs.grid-args}} run.py
+          export cluster_name=${{ inputs.cluster_name }}
+          echo "cluster_name=${cluster_name}" >> $GITHUB_ENV
         shell: bash
