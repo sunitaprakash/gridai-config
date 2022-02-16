@@ -28,5 +28,4 @@ jobs:
           if [[ -z "${run_name}" ]]; then
             echo "Error: 'grid_name:[run_name]' not found in output"
             exit 1
-          fi   
-        shell: bash
+          fi 
