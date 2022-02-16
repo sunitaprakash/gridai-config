@@ -20,9 +20,8 @@ jobs:
       - id: gridai-obj-status
         run: |
           # failed can flipped to running.  check 3 times for flip flop.
-          pwd
-          ls -al
           grid run ${{github.event.inputs.grid-args}} run.py > grid.run.log
+          ls -al 
           export run_name=$(cat grid.run.log | awk -F: '$1=/grid_name/ {print $2}' | tr -s '[:blank:]')
           echo "run_name=${run_name}" >> $GITHUB_ENV           
           if [[ -z "${run_name}" ]]; then
