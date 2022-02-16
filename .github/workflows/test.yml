@@ -34,3 +34,8 @@ jobs:
             echo "Error: 'grid_name:[run_name]' not found in output"
             exit 1
           fi 
+      - id: grid-status
+        uses: gridai-actions/gridai-status@v0
+        with:
+          obj-type: run
+          obj-id: ${run_name}
