@@ -28,6 +28,6 @@ jobs:
           pwd
           ls -al
           grid run ${{github.event.inputs.grid-args}} run.py
-          export cluster_name=${{ inputs.cluster_name }}
-          echo "cluster_name=${cluster_name}" >> $GITHUB_ENV
+          export run_name=${{ inputs.run_name }}
+          echo "run_name=${run_name}" >> $GITHUB_ENV
         shell: bash
