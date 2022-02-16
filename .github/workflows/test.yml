@@ -38,3 +38,7 @@ jobs:
         with:
           obj_type: run 
           obj_id: ${{ steps.run.outputs.run_name }}
+      - run: |
+          echo echo "run_name: ${env,run_name}-exp0"
+          grid logs --show-build-logs ${{ env.run_name }}-exp0
+          
