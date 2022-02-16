@@ -3,10 +3,6 @@ name: "test Actions"
 on:
   workflow_dispatch:
     inputs:
-      run_name:
-        required: false
-        default: c$(date '+%y%m%d-%H%M%S')
-        description: Grid.ai Run name`
       grid-args:
         required: true
         default: --config config.yml --instance_type t2.medium
@@ -15,20 +11,18 @@ on:
 jobs:
   gridai-actions:
     runs-on: ubuntu-latest
-    name: grid-env run
     steps:
       - uses: actions/checkout@v2
       - uses: gridai-actions/gridai-login@v0
         with:
           gridai-username: ${{ secrets.GRIDAI_USERNAME }} 
-          gridai-key: ${{ secrets.GRIDAI_KEY }}
-              
+          gridai-key: ${{ secrets.GRIDAI_KEY }}            
       - id: gridai-obj-status
         run: |
           # failed can flipped to running.  check 3 times for flip flop.
           pwd
           ls -al
-          grid run ${{github.event.inputs.grid-args}} run.py | tee grid.run.log
+          grid run ${{github.event.inputs.grid-args}} run.py > grid.run.log
           export run_name=$(cat grid.run.log | awk -F: '$1=/grid_name/ {print $2}' | tr -s '[:blank:]')
           echo "run_name=${run_name}" >> $GITHUB_ENV           
           if [[ -z "${run_name}" ]]; then
