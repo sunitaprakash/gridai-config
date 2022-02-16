@@ -30,4 +30,6 @@ jobs:
           grid run ${{github.event.inputs.grid-args}} run.py
           export run_name=${{ inputs.run_name }}
           echo "run_name=${run_name}" >> $GITHUB_ENV
+          echo "run_name: ${run_name}"
+          grid logs --show-build-logs ${run_name}-exp0
         shell: bash
