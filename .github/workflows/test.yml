@@ -28,10 +28,7 @@ jobs:
           ls -al grid.run.log
           echo The RunName is ${{ github.event.inputs.run_name }}
           echo EXP_NAME= "${{ github.event.inputs.run_name }}-exp0"           
-          if [[ -z "${run_name}" ]]; then
-            echo "Error: 'grid_name:[run_name]' not found in output"
-            exit 1
-          fi 
+          grid logs --show-build-logs ${EXP_NAME}
       - id: grid-status
         uses: gridai-actions/gridai-status@v0
         with:
