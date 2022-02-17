@@ -31,7 +31,7 @@ jobs:
           #grid logs --show-build-logs ${EXP_NAME}
       - run: |
           sleep 240 &&
-          grid logs --show-build-logs "sunitaprakash.${{ github.event.inputs.run_name }}-exp0" | tee grid.buildlog
+          grid logs --show-build-logs "sunitaprakash:${{ github.event.inputs.run_name }}-exp0" | tee grid.buildlog
       - id: grid-status
         uses: gridai-actions/gridai-status@v0
         with:
