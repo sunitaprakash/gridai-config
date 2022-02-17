@@ -23,7 +23,7 @@ jobs:
           gridai-key: ${{ secrets.GRIDAI_KEY }}            
       - run: |
           # failed can flipped to running.  check 3 times for flip flop.
-          grid run ${{github.event.inputs.grid-args}} run.py | tee  grid.run.log
+          grid run ${{github.event.inputs.grid-args}} --name  ${{ github.event.inputs.run_name }} run.py | tee  grid.run.log
       - run: |
           ls -al grid.run.log
           echo The RunName is ${{ github.event.inputs.run_name }}
