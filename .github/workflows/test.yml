@@ -29,6 +29,7 @@ jobs:
           echo The RunName is ${{ github.event.inputs.run_name }}
           echo EXP_NAME= "${{ github.event.inputs.run_name }}-exp0"           
           grid logs --show-build-logs ${EXP_NAME}
+          grid logs --show-build-logs "${{ github.event.inputs.run_name }}-exp0"
       - id: grid-status
         uses: gridai-actions/gridai-status@v0
         with:
