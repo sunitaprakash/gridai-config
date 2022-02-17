@@ -30,7 +30,7 @@ jobs:
           echo EXP_NAME= "${{ github.event.inputs.run_name }}-exp0"           
           #grid logs --show-build-logs ${EXP_NAME}
       - run: |
-          sleep 120 &&
+          sleep 240 &&
           grid logs --show-build-logs "${{ github.event.inputs.run_name }}-exp0"
       - id: grid-status
         uses: gridai-actions/gridai-status@v0
